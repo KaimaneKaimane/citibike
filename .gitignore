@@ -1,0 +1,87 @@
+# Infrastructure
+
+## <Coverage files>
+.coverage
+coverage-*.xml
+## </Coverage files>
+
+## <Crashlytics plugin (for Android Studio and IntelliJ)>
+com_crashlytics_export_strings.xml
+crashlytics-build.properties
+crashlytics.properties
+fabric.properties
+## </Crashlytics plugin (for Android Studio and IntelliJ)>
+
+## <Cursive Clojure plugin>
+.idea/replstate.xml
+## </Cursive Clojure plugin>
+
+## <Helm>
+/helm/**/*.tgz
+## </Helm>
+
+## <IntelliJ>
+out/
+## </IntelliJ>
+
+## <JIRA plugin>
+atlassian-ide-plugin.xml
+## </JIRA plugin>
+
+## <mpeltonen/sbt-idea plugin>
+.idea_modules/
+## </mpeltonen/sbt-idea plugin>
+
+## <User-specifics>
+.idea/
+.idea/**
+## </User-specifics>
+
+## <VSCode>
+.vscode/
+## </VSCode>
+
+
+# Logs
+*.log
+
+
+# Miscellaneous
+**/.eggs/
+**/.pytest_cache/
+**/__pycache__/
+**/build/
+**/dist/
+*.code-workspace
+*.egg-info/
+*.h5
+*.pb
+*.pkl
+*.tar.gz
+.DS_Store
+.Trash*/
+.cache/
+.ipynb_checkpoints/
+.tox/
+/.Trash-1000/
+/.cache/
+/.ipynb_checkpoints/
+/.vscode/
+ids.txt
+secrets.yml
+tags
+wheelhouse/
+model.hdf5
+
+# Tests
+**/.hypothesis
+
+# Virtual environments
+**/.env/
+**/.venv
+**/venv
+docker/notebook/.venv
+docker/project/.venv
+*.python-version
+.gitignore
+dataset/
