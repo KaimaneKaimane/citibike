@@ -1,7 +1,13 @@
 import pandas as pd
 
 
-def load_citibike_data(columns):
+def citibike(columns: list) -> pd.DataFrame:
+    """
+    Loads the entire year 2018 from the citibike dataset.
+
+    :param columns: preselects some columns during loading
+    :return: the citibike dataset as a dataframe
+    """
     citibike_data = None
 
     for month in range(1, 13):

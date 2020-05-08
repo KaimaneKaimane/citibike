@@ -12,10 +12,6 @@ pytest-mock = "*"
 numpy = "*"
 pandas = "*"
 sklearn = "*"
-matplotlib = "*"
-statsmodels = "*"
-seaborn = "*"
-pandas_profiling = "*"
 
 [requires]
 python_version = "3.7"

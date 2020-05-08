@@ -56,7 +56,6 @@ atlassian-ide-plugin.xml
 *.egg-info/
 *.h5
 *.pb
-*.pkl
 *.tar.gz
 .DS_Store
 .Trash*/
