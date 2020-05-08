@@ -16,6 +16,10 @@ matplotlib = "*"
 statsmodels = "*"
 seaborn = "*"
 pandas_profiling = "*"
+folium = "*"
+imblearn = "*"
+tensorflow = "*"
+keras = "*"
 
 [requires]
 python_version = "3.7"
