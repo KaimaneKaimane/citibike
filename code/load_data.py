@@ -1,4 +1,8 @@
+import logging
+
 import pandas as pd
+
+logger = logging.getLogger(__name__)
 
 
 def citibike(columns: list) -> pd.DataFrame:
@@ -15,7 +19,7 @@ def citibike(columns: list) -> pd.DataFrame:
             month_str = f'0{month}'
         else:
             month_str = f'{month}'
-        print('Loading month', month_str)
+        logger.info(f'Loading month {month_str}...',)
         current_month = pd.read_csv(
             f'../dataset/2018{month_str}-citibike-tripdata.csv',
             usecols=columns

@@ -1,0 +1,39 @@
+type: object
+properties:
+  tripduration:
+    type: integer
+    minimum: 1
+  start_station_latitude:
+    type: number
+    minimum: -90
+    maximum: 90
+  start_station_longitude:
+    type: number
+    minimum: -180
+    maximum: 180
+  end_station_latitude:
+    type: number
+    minimum: -90
+    maximum: 90
+  end_station_longitude:
+    type: number
+    minimum: -180
+    maximum: 180
+  birth_year:
+    type: integer
+    minimum: 1800
+  gender:
+    type: integer
+    minimum: 0
+    maximum: 2
+  starttime:
+    type: string
+additionalProperties: False
+required:
+  - tripduration
+  - start_station_latitude
+  - start_station_longitude
+  - end_station_latitude
+  - end_station_longitude
+  - birth_year
+  - gender

@@ -1,0 +1,30 @@
+load:
+  extract_columns: [
+      'tripduration',
+      'starttime',
+      'stoptime',
+      'start station latitude',
+      'start station longitude',
+      'end station latitude',
+      'end station longitude',
+      'usertype',
+      'birth year',
+      'gender'
+    ]
+dataset:
+  filter_columns: [
+      'tripduration',
+      'start station latitude',
+      'start station longitude',
+      'end station latitude',
+      'end station longitude',
+      'birth year',
+      'gender',
+      'usertype'
+    ]
+  label_column: 'usertype'
+
+training:
+  train_test_split:
+    test_size: 0.33
+    random_state: 42

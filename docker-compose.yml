@@ -1,0 +1,10 @@
+version: '2'
+services:
+  api:
+    container_name: api
+    image: citybike/base:latest
+    command: gunicorn -w 1 --bind=0.0.0.0:8080 --pythonpath=./citibike --timeout=0 code.api:app
+    volumes:
+      - ..:/opt/project
+    ports:
+      - 8080:8080

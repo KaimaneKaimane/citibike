@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 from sklearn import preprocessing
 
+from code.config import config
+
 
 def _fix_tripduration(dataset: pd.DataFrame) -> pd.DataFrame:
     """
@@ -18,23 +20,17 @@ def _fix_tripduration(dataset: pd.DataFrame) -> pd.DataFrame:
     return dataset
 
 
-def _filter_columns(dataset: pd.DataFrame) -> pd.DataFrame:
+def _filter_columns(dataset: pd.DataFrame, training: bool = True) -> pd.DataFrame:
     """
     Filters out certain columns which are not required for the prediction.
 
     :param dataset: the citibike dataset
     :return: the reduced citibike dataset
     """
-    filter_columns = [
-        'tripduration',
-        'start station latitude',
-        'start station longitude',
-        'end station latitude',
-        'end station longitude',
-        'usertype',
-        'birth year',
-        'gender'
-    ]
+    filter_columns = config['dataset']['filter_columns']
+    if not training and config['dataset']['label_column'] in filter_columns:
+        filter_columns.remove(config['dataset']['label_column'])
+
     return dataset[filter_columns]
 
 
@@ -77,6 +73,17 @@ def _create_weekday_feature(dataset: pd.DataFrame) -> pd.DataFrame:
     return dataset
 
 
+def _transform_to_datetime(dataset: pd.DataFrame) -> pd.DataFrame:
+    """
+    Transforms the startime to a datetime
+
+    :param dataset: the citibike dataset containing the starttime column
+    :return: the citibike dataset with transformed starttime
+    """
+    dataset['starttime'] = pd.to_datetime(dataset['starttime'])
+    return dataset
+
+
 def _encode_weekday(dataset: pd.DataFrame) -> pd.DataFrame:
     """
     Label encodes the weekdays.
@@ -96,10 +103,12 @@ def encode_usertype(dataset: pd.DataFrame):
     :param dataset: the citibike dataset containing the usertype column
     :return: the citibike dataset with the encoded usertype column and the encoder
     """
-    unique_labels = dataset['usertype'].unique()
+    label_column = config['dataset']['label_column']
+
+    unique_labels = dataset[label_column].unique()
     usertype_encoder = preprocessing.LabelEncoder()
     usertype_encoder.fit(unique_labels)
-    dataset['usertype'] = usertype_encoder.transform(dataset['usertype'])
+    dataset[label_column] = usertype_encoder.transform(dataset[label_column])
     return dataset, usertype_encoder
 
 
@@ -116,8 +125,10 @@ def run(dataset: pd.DataFrame, training: bool = False) -> pd.DataFrame:
         dataset = _fix_tripduration(dataset)
         dataset = _remove_duration_outlier(dataset)
         dataset = _remove_geo_outlier(dataset)
+    else:
+        dataset = _transform_to_datetime(dataset)
 
     dataset = _create_weekday_feature(dataset)
     dataset = _encode_weekday(dataset)
-    dataset = _filter_columns(dataset)
+    dataset = _filter_columns(dataset, training)
     return dataset

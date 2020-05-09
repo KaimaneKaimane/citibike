@@ -9,9 +9,13 @@ pytest-cov = "*"
 pytest-mock = "*"
 
 [packages]
+pyyaml = "*"
 numpy = "*"
 pandas = "*"
 sklearn = "*"
+gunicorn = "*"
+flask = "*"
+fastjsonschema = "*"
 
 [requires]
 python_version = "3.7"

@@ -15,3 +15,6 @@ base: clean-pycache
 
 base-lock:
 	cd docker/project/; pipenv lock
+
+api:
+	docker-compose -f docker-compose.yml up
