@@ -55,6 +55,7 @@ atlassian-ide-plugin.xml
 *.code-workspace
 *.egg-info/
 *.h5
+*.pkl
 *.pb
 *.tar.gz
 .DS_Store

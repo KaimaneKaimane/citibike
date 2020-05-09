@@ -11,6 +11,8 @@ More information about the dataset: https://www.citibikenyc.com/system-data
 
 Download the files into a folder called `dataset` with the following naming scheme: `2018{month}-citibike-tripdata.csv`
 
+Extract the model in the `model` directory with path `model/citibike_model.pkl`
+
 To build the project execute:
 ```console
 make base
