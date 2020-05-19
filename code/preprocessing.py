@@ -5,6 +5,12 @@ from sklearn import preprocessing
 from code.config import config
 
 
+def _select_balanced_sample(dataset: pd.DataFrame) -> pd.DataFrame:
+    dataset = dataset.groupby(config['dataset']['label_column']).apply(lambda x: x.sample(500000))
+    dataset = dataset.reset_index(level=[0,1], drop=True)
+    return dataset
+
+
 def _fix_tripduration(dataset: pd.DataFrame) -> pd.DataFrame:
     """
     Fixes tripdurations that do not match the start & stop times.
@@ -125,6 +131,7 @@ def run(dataset: pd.DataFrame, training: bool = False) -> pd.DataFrame:
         dataset = _fix_tripduration(dataset)
         dataset = _remove_duration_outlier(dataset)
         dataset = _remove_geo_outlier(dataset)
+        dataset = _select_balanced_sample(dataset)
     else:
         dataset = _transform_to_datetime(dataset)
 

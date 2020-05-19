@@ -34,6 +34,5 @@ class DecisionTreeModel:
         :return: f1 score and classification report
         """
         return {
-            'f1_score': self.model_status['f1_score'],
-            'classification_report': self.model_status['classification_report']
+            'f1_score': self.model_status['f1_score']
         }
